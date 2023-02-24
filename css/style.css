@@ -14,6 +14,7 @@ body{
 }
 .nav-bar{
  font-weight: bold;
+ display: block;
 }
 ul{
     list-style: none;
@@ -36,7 +37,7 @@ a{
     justify-content: center;
     z-index: -1;
     opacity: 0;
-    transition: all .3s ease;
+    transition: all .1s ease;
     border-radius: .4rem;
 }   
 .arrow{
@@ -68,23 +69,24 @@ a{
     
 }
 .nav-bar > ul > li > .dropdown{
-   visibility: hidden;
+    display: none;
     opacity: 1;
     padding: .8rem;
     position: absolute;
-    top: 6.9rem;
-    z-index: 1000;
-
+    transform: translateY(9.2rem);
+    top: 0;
 }
 
 .nav-bar > ul > .trigger .dropdown{
-    visibility: visible;
-    transition: all 2s ease;
+
+    display: block;
+    transition: all .3s ease;
 }
 .nav-bar > ul > .trigger-active .dropdown{
     opacity: 1;
     
 }
+
 .about {
     display: flex;
     gap: 1rem;
@@ -103,14 +105,15 @@ a{
     display: flex;
     flex-flow: column wrap;
     width:fit-content;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 .projects a{
-    padding: .3rem;
+    padding: .1rem;
     background: rgb(206, 5, 206);
     border-radius: 1rem;
     margin-right: .5rem;
     font-weight: bold;
+
 }
 .projects a:hover{
     background-color: rgb(73, 1, 73);
@@ -120,6 +123,10 @@ a{
 .projects li{
     flex-basis: 100%;
     text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+.projects li:last-child{
+    margin-bottom: .1rem;
 }
 .links li{
     padding: .3rem .8rem;

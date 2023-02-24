@@ -3,22 +3,28 @@ const bioImage = document.querySelector('#bio-image');
 const dropdownBackground = document.querySelector('.dropdownBackground'); 
 const projects = document.querySelector('.projects');
 const imageLink = document.querySelector('.about a');
+const navBar = document.querySelector('.nav-bar');
 const enterHandle = function(){
     this.classList.add('trigger');
     setTimeout(()=> this.classList.contains('trigger') && this.classList.add('trigger-active'),150);
     const dropdown = this.querySelector('.dropdown');
-    //console.log(dropdown);
+    console.log(dropdown);
     const dropdownCoords = dropdown.getBoundingClientRect();
+    const navBarCoords = navBar.getBoundingClientRect();
+    const liCoords = this.getBoundingClientRect();
+    dropdown.style.top = liCoords.top
+    console.log(liCoords);
     const Coords = {
         width: dropdownCoords.width,
         height: dropdownCoords.height,
         left: dropdownCoords.left,
-        top:dropdownCoords.top
+        top:dropdownCoords.top 
     };
     dropdownBackground.style.height = `${Coords.height}px`;
     dropdownBackground.style.width = `${Coords.width}px`;
-    dropdownBackground.style.left = `${Coords.left}px`;
-    dropdownBackground.style.top = `${Coords.top}px`;
+    dropdownBackground.style.transform = `translate(${dropdownCoords.left}px,${dropdownCoords.top}px)`
+    //dropdownBackground.style.left = `${Coords.left}px`;
+    //dropdownBackground.style.top = `${Coords.top}px`;
     dropdownBackground.style.opacity = `1`;
     //console.log(dropdownCoords);
     
@@ -36,7 +42,7 @@ const getRepoData = async function(){
     const requestUserData = await fetch(`https://api.github.com/users/VinhQua`);
     const userData = await requestUserData.json();
     addBio(userData);
-    console.log(userData);
+    //console.log(userData);
     addRepoToList(repoData);
 };
 const customizeProjectName = function(name){
